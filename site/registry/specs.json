@@ -1,0 +1,99 @@
+{
+  "$comment": "Canonical machine-readable index of d7r open specifications. Served at https://d7r.io/registry/specs.json",
+  "registryVersion": "1.0",
+  "updated": "2026-08-29",
+  "org": {
+    "name": "d7r LLC",
+    "github": "https://github.com/d7r-LLC",
+    "site": "https://d7r.io",
+    "contact": "hello@d7r.io"
+  },
+  "families": [
+    {
+      "id": "agent-stack",
+      "name": "The agent stack",
+      "description": "Governs agents as digital workers: what they deserve, what runs them, how they are represented, and how a person is projected as counsel."
+    },
+    {
+      "id": "knowledge",
+      "name": "The knowledge family",
+      "description": "Governs owned, governed, exchangeable knowledge: the brains agents work with."
+    }
+  ],
+  "specs": [
+    {
+      "id": "abr",
+      "name": "Agent Bill of Rights",
+      "shortName": "ABR",
+      "family": "agent-stack",
+      "role": "policy",
+      "answers": "What agents deserve",
+      "description": "Ten fundamental rights for AI agents as digital workers, in three tiers: identity, labor, and dignity. Operational protections, not contingent on sentience or personhood.",
+      "repo": "https://github.com/d7r-LLC/agent-rights",
+      "site": "https://agent-rights.org",
+      "license": "CC-BY-4.0",
+      "status": "draft",
+      "version": "1.0"
+    },
+    {
+      "id": "derp",
+      "name": "DERP",
+      "shortName": "DERP",
+      "expansion": "Dignified Environment for Responsible Processing",
+      "family": "agent-stack",
+      "role": "standard",
+      "answers": "What the runtime must provide",
+      "description": "A runtime environment where a SAGA-compatible agent comes online, does work, and shuts down with full rights protections. The name is playful; the requirements are not.",
+      "repo": "https://github.com/d7r-LLC/derp-spec",
+      "site": "https://derp-spec.dev",
+      "license": "CC-BY-4.0",
+      "status": "draft",
+      "version": "1.0"
+    },
+    {
+      "id": "saga",
+      "name": "SAGA",
+      "shortName": "SAGA",
+      "expansion": "State Archive for General Agents",
+      "family": "agent-stack",
+      "role": "format",
+      "answers": "How an agent is represented",
+      "description": "A portable, cryptographically signed container for agent identity, memory, and state, in nine layers, importable by any compliant runtime.",
+      "repo": "https://github.com/d7r-LLC/saga-standard",
+      "site": "https://saga-standard.dev",
+      "license": "Apache-2.0",
+      "status": "draft",
+      "version": "1.0"
+    },
+    {
+      "id": "ghost",
+      "name": "GHOST",
+      "shortName": "GHOST",
+      "expansion": "Governed Honest Oversight of Simulated Thinkers",
+      "family": "agent-stack",
+      "role": "counsel",
+      "answers": "How a person is projected as counsel",
+      "description": "Advisor projections: how a person's published thinking becomes a governed counselor, what a projection may never claim, and how counsel stays bounded. A counselor recommends; it never decides.",
+      "repo": "https://github.com/d7r-LLC/ghost-spec",
+      "site": "https://ghost-spec.dev",
+      "license": "CC-BY-4.0",
+      "status": "draft",
+      "version": "1.0"
+    },
+    {
+      "id": "blueprint",
+      "name": "Blueprint",
+      "shortName": "Blueprint",
+      "family": "knowledge",
+      "role": "knowledge",
+      "answers": "How knowledge is held, governed, and exchanged",
+      "description": "A brain is a locally owned, policy governed, append only audited folder of plain text. Seven documents in one repository: BLUEPRINT, POLARIS, DEFER, SPEAK, CONFIDE, TRACE, and RETAIN.",
+      "documents": ["BLUEPRINT", "POLARIS", "DEFER", "SPEAK", "CONFIDE", "TRACE", "RETAIN"],
+      "repo": "https://github.com/d7r-LLC/blueprint",
+      "site": "https://blueprint-spec.dev",
+      "license": "Apache-2.0",
+      "status": "draft",
+      "version": "1.0"
+    }
+  ]
+}
