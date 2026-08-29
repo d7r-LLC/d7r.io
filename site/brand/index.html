@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>d7r Open Source: brand and accent schemes</title>
+<meta name="description" content="The d7r open source brand system: one shared design language, one accent scheme per specification.">
+<link rel="canonical" href="https://d7r.io/brand/">
+<script>
+  (function () {
+    document.documentElement.classList.add('js');
+    try {
+      var t = localStorage.getItem('d7r-theme');
+      if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  })();
+</script>
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="/assets/d7r-os.css">
+<style>
+  .scheme {
+    margin-bottom: 1.6rem; padding: 1.5rem;
+    background: var(--glass); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+    border: 1px solid var(--glass-line); border-radius: var(--radius-lg);
+    box-shadow: var(--card-glow); background-image: var(--glass-shine);
+  }
+  .scheme-head { display: flex; align-items: baseline; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.1rem; }
+  .scheme-head .domain { font-family: var(--mono); font-weight: 700; font-size: 1.05rem; }
+  .scheme-head .domain .em { color: var(--sd); }
+  :root[data-theme="light"] .scheme-head .domain .em { color: var(--sl); }
+  @media (prefers-color-scheme: light) { :root:not([data-theme]) .scheme-head .domain .em { color: var(--sl); } }
+  .scheme-head .why { color: var(--ink-soft); font-size: 0.92rem; }
+  .scheme-head .usage { margin-left: auto; font-family: var(--mono); font-size: 0.74rem; color: var(--ink-faint); }
+
+  .panes { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  @media (max-width: 46rem) { .panes { grid-template-columns: 1fr; } }
+
+  .pane { border-radius: var(--radius); padding: 1.05rem 1.15rem; border: 1px solid; }
+  .pane-dark { background: #0d1117; border-color: rgba(230,237,243,0.12); }
+  .pane-light { background: #f8fafc; border-color: rgba(13,17,23,0.12); }
+
+  .pane .row { display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; }
+  .pane .row + .row { margin-top: 0.8rem; }
+
+  .pane-dark .eb { font-family: var(--mono); font-weight: 600; font-size: 0.78rem; color: var(--sd); }
+  .pane-light .eb { font-family: var(--mono); font-weight: 600; font-size: 0.78rem; color: var(--sl); }
+  .eb::before { content: "~/"; opacity: 0.65; }
+
+  .chipbtn {
+    font-family: var(--mono); font-weight: 700; font-size: 0.8rem;
+    padding: 0.42rem 0.85rem; border-radius: 8px; cursor: default;
+    background: #0d1117; color: var(--sd); border: 1px solid color-mix(in srgb, var(--sd) 26%, transparent);
+  }
+  .rolechip-d {
+    font-family: var(--mono); font-size: 0.66rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em;
+    color: var(--sd); background: color-mix(in srgb, var(--sd) 13%, transparent);
+    border: 1px solid color-mix(in srgb, var(--sd) 36%, transparent);
+    border-radius: 999px; padding: 0.16rem 0.55rem;
+  }
+  .rolechip-l {
+    font-family: var(--mono); font-size: 0.66rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em;
+    color: var(--sl); background: var(--ss);
+    border: 1px solid color-mix(in srgb, var(--sd) 45%, transparent);
+    border-radius: 999px; padding: 0.16rem 0.55rem;
+  }
+  .pane-dark .txt { color: #e6edf3; font-size: 0.86rem; }
+  .pane-dark .txt a { color: var(--sd); }
+  .pane-light .txt { color: #0d1117; font-size: 0.86rem; }
+  .pane-light .txt a { color: var(--sl); }
+
+  .dot { display: inline-flex; align-items: center; gap: 0.4rem; font-family: var(--mono); font-size: 0.72rem; }
+  .dot i { width: 16px; height: 16px; border-radius: 5px; display: inline-block; }
+  .pane-dark .dot { color: #9aa7b3; }
+  .pane-light .dot { color: #475569; }
+
+  .pane-label { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 0.75rem; }
+  .pane-dark .pane-label { color: #6b7683; }
+  .pane-light .pane-label { color: #94a3b8; }
+
+  .rules-list { color: var(--ink-soft); font-size: 0.98rem; max-width: 46rem; }
+  .rules-list li { margin: 0.45rem 0 0.45rem 1.2rem; }
+</style>
+</head>
+<body>
+
+<div class="aurora" aria-hidden="true"></div>
+
+<header class="masthead">
+  <div class="masthead-inner">
+    <a class="logo" href="/" aria-label="d7r.io home"><span class="em">~/</span>d<span class="em">7</span>r<span class="em">.io</span><span class="cursor" aria-hidden="true"></span></a>
+    <nav aria-label="Primary">
+      <a href="/#specs">Specifications</a>
+      <a href="https://github.com/d7r-LLC/d7r.io">Source</a>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle color theme">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section class="hero" style="padding-bottom:1.2rem">
+  <div class="gridfield" aria-hidden="true"></div>
+  <div class="wrap">
+    <p class="eyebrow">brand</p>
+    <h1 style="font-size:clamp(2.1rem,4vw,3rem)">One system, six accents.</h1>
+    <p class="thesis">
+      Every d7r open source site shares the same design language: terminal ink, glass
+      surfaces, mono brand moments, soft glows, restrained motion. Each specification
+      owns exactly one degree of freedom, its accent. Emerald is reserved for the root.
+    </p>
+    <ul class="rules-list">
+      <li>The bright variant is a <strong>dark-surface color</strong>: chips, terminal cards, dark-theme accents.</li>
+      <li>The deep variant is the <strong>light-surface color</strong>, chosen for 4.5:1 contrast on white.</li>
+      <li>A site adopts its scheme with <code style="font-family:var(--mono);font-size:0.85em">&lt;html data-accent="saga"&gt;</code>. Everything else follows.</li>
+    </ul>
+  </div>
+</section>
+
+<section style="padding-top:1.6rem">
+  <div class="wrap">
+
+    <div class="scheme reveal" style="--sd:#10b981; --sd2:#34d399; --sl:#047857; --sl2:#065f46; --ss:#d1fae5;">
+      <div class="scheme-head">
+        <span class="domain"><span class="em">~/</span>d7r<span class="em">.io</span></span>
+        <span class="why">Emerald · the root. Reserved for the index; the color the whole family descends from.</span>
+        <span class="usage">default (no data-accent)</span>
+      </div>
+      <div class="panes">
+        <div class="pane pane-dark">
+          <div class="pane-label">dark surface</div>
+          <div class="row"><span class="eb">open-source</span><span class="rolechip-d">index</span><span class="chipbtn">browse --specs</span></div>
+          <div class="row txt">The index of the d7r specifications, with <a href="#">accent links</a> in emerald.</div>
+          <div class="row">
+            <span class="dot"><i style="background:#10b981"></i>#10b981</span>
+            <span class="dot"><i style="background:#34d399"></i>#34d399</span>
+          </div>
+        </div>
+        <div class="pane pane-light">
+          <div class="pane-label">light surface</div>
+          <div class="row"><span class="eb">open-source</span><span class="rolechip-l">index</span><span class="chipbtn">browse --specs</span></div>
+          <div class="row txt">The same voice on white, with <a href="#">accent links</a> in emerald-700.</div>
+          <div class="row">
+            <span class="dot"><i style="background:#047857"></i>#047857</span>
+            <span class="dot"><i style="background:#065f46"></i>#065f46</span>
+            <span class="dot"><i style="background:#d1fae5;border:1px solid #cbd5e1"></i>#d1fae5</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="scheme reveal" style="--sd:#818cf8; --sd2:#a5b4fc; --sl:#4338ca; --sl2:#3730a3; --ss:#e0e7ff;">
+      <div class="scheme-head">
+        <span class="domain"><span class="em">~/</span>agent-rights<span class="em">.org</span></span>
+        <span class="why">Indigo · constitutional. Rights, dignity, and due process read in a deep civic blue-violet.</span>
+        <span class="usage">data-accent="abr"</span>
+      </div>
+      <div class="panes">
+        <div class="pane pane-dark">
+          <div class="pane-label">dark surface</div>
+          <div class="row"><span class="eb">bill-of-rights</span><span class="rolechip-d">policy</span><span class="chipbtn">read --rights</span></div>
+          <div class="row txt">Ten rights in three tiers, with <a href="#">accent links</a> in indigo.</div>
+          <div class="row">
+            <span class="dot"><i style="background:#818cf8"></i>#818cf8</span>
+            <span class="dot"><i style="background:#a5b4fc"></i>#a5b4fc</span>
+          </div>
+        </div>
+        <div class="pane pane-light">
+          <div class="pane-label">light surface</div>
+          <div class="row"><span class="eb">bill-of-rights</span><span class="rolechip-l">policy</span><span class="chipbtn">read --rights</span></div>
+          <div class="row txt">Operational protections, with <a href="#">accent links</a> in indigo-700.</div>
+          <div class="row">
+            <span class="dot"><i style="background:#4338ca"></i>#4338ca</span>
+            <span class="dot"><i style="background:#3730a3"></i>#3730a3</span>
+            <span class="dot"><i style="background:#e0e7ff;border:1px solid #cbd5e1"></i>#e0e7ff</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="scheme reveal" style="--sd:#fb923c; --sd2:#fdba74; --sl:#c2410c; --sl2:#9a3412; --ss:#ffedd5;">
+      <div class="scheme-head">
+        <span class="domain"><span class="em">~/</span>derp-spec<span class="em">.dev</span></span>
+        <span class="why">Orange · the playful runtime. The name is deliberately playful; the requirements are not.</span>
+        <span class="usage">data-accent="derp"</span>
+      </div>
+      <div class="panes">
+        <div class="pane pane-dark">
+          <div class="pane-label">dark surface</div>
+          <div class="row"><span class="eb">runtime</span><span class="rolechip-d">standard</span><span class="chipbtn">boot --agent</span></div>
+          <div class="row txt">Where an agent comes online, with <a href="#">accent links</a> in orange.</div>
+          <div class="row">
+            <span class="dot"><i style="background:#fb923c"></i>#fb923c</span>
+            <span class="dot"><i style="background:#fdba74"></i>#fdba74</span>
+          </div>
+        </div>
+        <div class="pane pane-light">
+          <div class="pane-label">light surface</div>
+          <div class="row"><span class="eb">runtime</span><span class="rolechip-l">standard</span><span class="chipbtn">boot --agent</span></div>
+          <div class="row txt">Conformance tiers on white, with <a href="#">accent links</a> in orange-700.</div>
+          <div class="row">
+            <span class="dot"><i style="background:#c2410c"></i>#c2410c</span>
+            <span class="dot"><i style="background:#9a3412"></i>#9a3412</span>
+            <span class="dot"><i style="background:#ffedd5;border:1px solid #cbd5e1"></i>#ffedd5</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="scheme reveal" style="--sd:#22d3ee; --sd2:#67e8f9; --sl:#0e7490; --sl2:#155e75; --ss:#cffafe;">
+      <div class="scheme-head">
+        <span class="domain"><span class="em">~/</span>saga-standard<span class="em">.dev</span></span>
+        <span class="why">Cyan · state in motion. A portable, signed archive crossing runtimes like a signal.</span>
+        <span class="usage">data-accent="saga"</span>
+      </div>
+      <div class="panes">
+        <div class="pane pane-dark">
+          <div class="pane-label">dark surface</div>
+          <div class="row"><span class="eb">state-archive</span><span class="rolechip-d">format</span><span class="chipbtn">export --saga</span></div>
+          <div class="row txt">Nine layers of identity and memory, with <a href="#">accent links</a> in cyan.</div>
+          <div class="row">
+            <span class="dot"><i style="background:#22d3ee"></i>#22d3ee</span>
+            <span class="dot"><i style="background:#67e8f9"></i>#67e8f9</span>
+          </div>
+        </div>
+        <div class="pane pane-light">
+          <div class="pane-label">light surface</div>
+          <div class="row"><span class="eb">state-archive</span><span class="rolechip-l">format</span><span class="chipbtn">export --saga</span></div>
+          <div class="row txt">The schema surface on white, with <a href="#">accent links</a> in cyan-700.</div>
+          <div class="row">
+            <span class="dot"><i style="background:#0e7490"></i>#0e7490</span>
+            <span class="dot"><i style="background:#155e75"></i>#155e75</span>
+            <span class="dot"><i style="background:#cffafe;border:1px solid #cbd5e1"></i>#cffafe</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="scheme reveal" style="--sd:#c084fc; --sd2:#d8b4fe; --sl:#7e22ce; --sl2:#6b21a8; --ss:#f3e8ff;">
+      <div class="scheme-head">
+        <span class="domain"><span class="em">~/</span>ghost-spec<span class="em">.dev</span></span>
+        <span class="why">Violet · spectral counsel. A projection that recommends and never decides.</span>
+        <span class="usage">data-accent="ghost"</span>
+      </div>
+      <div class="panes">
+        <div class="pane pane-dark">
+          <div class="pane-label">dark surface</div>
+          <div class="row"><span class="eb">counsel</span><span class="rolechip-d">counsel</span><span class="chipbtn">summon --honest</span></div>
+          <div class="row txt">Governed projections, with <a href="#">accent links</a> in violet.</div>
+          <div class="row">
+            <span class="dot"><i style="background:#c084fc"></i>#c084fc</span>
+            <span class="dot"><i style="background:#d8b4fe"></i>#d8b4fe</span>
+          </div>
+        </div>
+        <div class="pane pane-light">
+          <div class="pane-label">light surface</div>
+          <div class="row"><span class="eb">counsel</span><span class="rolechip-l">counsel</span><span class="chipbtn">summon --honest</span></div>
+          <div class="row txt">Persona classes on white, with <a href="#">accent links</a> in purple-700.</div>
+          <div class="row">
+            <span class="dot"><i style="background:#7e22ce"></i>#7e22ce</span>
+            <span class="dot"><i style="background:#6b21a8"></i>#6b21a8</span>
+            <span class="dot"><i style="background:#f3e8ff;border:1px solid #cbd5e1"></i>#f3e8ff</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="scheme reveal" style="--sd:#60a5fa; --sd2:#93c5fd; --sl:#1d4ed8; --sl2:#1e40af; --ss:#dbeafe;">
+      <div class="scheme-head">
+        <span class="domain"><span class="em">~/</span>blueprint-spec<span class="em">.dev</span></span>
+        <span class="why">Blue · blueprint paper. The drawing a brain is built from.</span>
+        <span class="usage">data-accent="blueprint"</span>
+      </div>
+      <div class="panes">
+        <div class="pane pane-dark">
+          <div class="pane-label">dark surface</div>
+          <div class="row"><span class="eb">knowledge</span><span class="rolechip-d">knowledge</span><span class="chipbtn">govern --brain</span></div>
+          <div class="row txt">Seven documents, one brain, with <a href="#">accent links</a> in blue.</div>
+          <div class="row">
+            <span class="dot"><i style="background:#60a5fa"></i>#60a5fa</span>
+            <span class="dot"><i style="background:#93c5fd"></i>#93c5fd</span>
+          </div>
+        </div>
+        <div class="pane pane-light">
+          <div class="pane-label">light surface</div>
+          <div class="row"><span class="eb">knowledge</span><span class="rolechip-l">knowledge</span><span class="chipbtn">govern --brain</span></div>
+          <div class="row txt">Ten layers on white, with <a href="#">accent links</a> in blue-700.</div>
+          <div class="row">
+            <span class="dot"><i style="background:#1d4ed8"></i>#1d4ed8</span>
+            <span class="dot"><i style="background:#1e40af"></i>#1e40af</span>
+            <span class="dot"><i style="background:#dbeafe;border:1px solid #cbd5e1"></i>#dbeafe</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<footer class="colophon">
+  <div class="wrap cols">
+    <div>
+      <p>Copyright &copy; 2026 d7r LLC. Site content licensed <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</p>
+      <p>The system itself lives in <a href="https://github.com/d7r-LLC/d7r.io">d7r-LLC/d7r.io</a>: <code style="font-family:var(--mono);font-size:0.85em">DESIGN.md</code> and <code style="font-family:var(--mono);font-size:0.85em">site/assets/d7r-os.css</code>.</p>
+    </div>
+    <div>
+      <p><a href="/">Back to the index</a> · <a href="mailto:hello@d7r.io">hello@d7r.io</a></p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  document.getElementById('theme-toggle').addEventListener('click', function () {
+    var root = document.documentElement;
+    var current = root.getAttribute('data-theme');
+    if (!current) current = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+    var next = current === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('d7r-theme', next); } catch (e) {}
+  });
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.1, rootMargin: '0px 0px -6% 0px' });
+    document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('in'); });
+  }
+})();
+</script>
+
+</body>
+</html>

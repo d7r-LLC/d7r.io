@@ -78,9 +78,33 @@ Soft and purposeful; nothing fast, nothing bouncy.
 - semantic landmarks, `aria-label` on the theme toggle and icon-only links;
 - keyboard order matches visual order; color never the only signal.
 
+## Accent schemes (one per spec)
+
+The brand constant is the system: ink, glass, mono, motion, layout. Each spec owns
+exactly one degree of freedom, its accent. Emerald is reserved for the root (d7r.io).
+Live specimen page: [d7r.io/brand](https://d7r.io/brand/).
+
+Every scheme carries the same contrast discipline as the emerald rule: the bright
+variant is a dark-surface color (chips, terminal cards, dark theme), the deep variant
+is the light-surface color at >= 4.5:1 on `#f8fafc`.
+
+| Site | `data-accent` | Feel | Dark | Dark-2 | Light | Light-2 | Soft |
+|---|---|---|---|---|---|---|---|
+| d7r.io | (default) | Emerald, the root | `#10b981` | `#34d399` | `#047857` | `#065f46` | `#d1fae5` |
+| agent-rights.org | `abr` | Indigo, constitutional | `#818cf8` | `#a5b4fc` | `#4338ca` | `#3730a3` | `#e0e7ff` |
+| derp-spec.dev | `derp` | Orange, the playful runtime | `#fb923c` | `#fdba74` | `#c2410c` | `#9a3412` | `#ffedd5` |
+| saga-standard.dev | `saga` | Cyan, state in motion | `#22d3ee` | `#67e8f9` | `#0e7490` | `#155e75` | `#cffafe` |
+| ghost-spec.dev | `ghost` | Violet, spectral counsel | `#c084fc` | `#d8b4fe` | `#7e22ce` | `#6b21a8` | `#f3e8ff` |
+| blueprint-spec.dev | `blueprint` | Blue, blueprint paper | `#60a5fa` | `#93c5fd` | `#1d4ed8` | `#1e40af` | `#dbeafe` |
+
+**Usage.** Site-wide: `<html data-accent="saga">`; every component (buttons, glows,
+logo, chips, aurora, terminal cards) re-derives from the accent primitives. Scoped
+preview inside a page (as on the index's spec cards): `class="ac-scope"
+data-accent="saga"` on the element. Never introduce a second accent on one site, and
+never use a bright variant as text on a light surface.
+
 ## Rollout to spec sites
 
 Each spec site keeps its own content and IA but adopts: the stylesheet, the prompt logo
-with its own domain, the masthead, theme toggle, status flag, glass cards, and colophon.
-Per-site accent stays emerald; specs are distinguished by content and role chips, not by
-color forks.
+with its own domain, the masthead, theme toggle, status flag, glass cards, the colophon,
+and its own `data-accent` from the table above.
