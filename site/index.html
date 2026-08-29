@@ -10,84 +10,122 @@
 <meta property="og:description" content="Open specifications for governed agents and owned knowledge. SAGA moves an agent. Blueprint moves a thought.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://d7r.io/">
-<link rel="stylesheet" href="/assets/style.css">
+<script>
+  (function () {
+    document.documentElement.classList.add('js');
+    try {
+      var t = localStorage.getItem('d7r-theme');
+      if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  })();
+</script>
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="/assets/d7r-os.css">
 </head>
 <body>
 
+<div class="aurora" aria-hidden="true"></div>
+
 <header class="masthead">
-  <div class="wrap">
-    <a class="brand" href="/">d7r.io</a>
-    <nav>
+  <div class="masthead-inner">
+    <a class="logo" href="/" aria-label="d7r.io home"><span class="em">~/</span>d<span class="em">7</span>r<span class="em">.io</span><span class="cursor" aria-hidden="true"></span></a>
+    <nav aria-label="Primary">
       <a href="#stack">Stack</a>
       <a href="#specs">Specifications</a>
       <a href="#registry">Registry</a>
-      <a href="https://github.com/d7r-LLC">GitHub</a>
+      <a class="btn btn-primary btn-sm" href="https://github.com/d7r-LLC">GitHub</a>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle color theme">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+      </button>
     </nav>
   </div>
 </header>
 
 <main>
 
-<div class="wrap hero">
-  <h1>d7r Open Source</h1>
-  <p class="expansion">Open specifications for governed agents and owned knowledge</p>
+<section class="hero">
+  <div class="gridfield" aria-hidden="true"></div>
+  <div class="wrap hero-grid">
+  <div>
+    <p class="eyebrow">open-source</p>
+    <h1>Open specifications for <span class="accent-word">governed agents</span> and owned knowledge.</h1>
+    <p class="expansion">SAGA moves an agent. Blueprint moves a thought.</p>
+    <p class="thesis">
+      AI agents are digital workers, and the knowledge they work with belongs to someone.
+      These specifications govern both sides of that sentence: what agents deserve, what
+      runs them, how they are represented and projected, and how a person's knowledge is
+      held, governed, and exchanged without leaving their control.
+    </p>
 
-  <p class="thesis">
-    AI agents are digital workers, and the knowledge they work with belongs to someone.
-    These specifications govern both sides of that sentence: what agents deserve, what
-    runs them, how they are represented and projected, and how a person's knowledge is
-    held, governed, and exchanged without leaving their control.
-  </p>
+    <div class="status-flag reveal">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 9v4M12 17h.01"/><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/></svg>
+      <span><strong>Everything here is a draft.</strong> Nothing in any of these repositories is
+      adopted until it lands as a decision record in its own repo. Conformance claims
+      against a draft are premature.</span>
+    </div>
 
-  <div class="status-flag">
-    <strong>Everything here is a draft.</strong> Nothing in any of these repositories is
-    adopted until it lands as a decision record in its own repo. Conformance claims
-    against a draft are premature.
+    <div class="actions">
+      <a class="btn btn-primary" href="#specs">browse --specs</a>
+      <a class="btn btn-secondary" href="https://github.com/d7r-LLC">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="width:18px;height:18px"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.55 0-.27-.01-1.17-.02-2.12-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.75 2.69 1.25 3.34.95.1-.74.4-1.25.72-1.54-2.55-.29-5.23-1.28-5.23-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.24 2.76.12 3.05.74.81 1.18 1.83 1.18 3.09 0 4.41-2.69 5.38-5.25 5.66.41.35.77 1.05.77 2.12 0 1.53-.01 2.76-.01 3.14 0 .3.2.67.8.55A10.52 10.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg>
+        Source on GitHub
+      </a>
+    </div>
   </div>
 
-  <div class="actions">
-    <a class="btn btn-primary" href="#specs">Browse the specifications</a>
-    <a class="btn" href="https://github.com/d7r-LLC">Source on GitHub</a>
+  <aside class="termcard reveal" aria-label="Registry terminal specimen">
+    <div class="termcard-bar"><i></i><i></i><i></i><span>~/d7r.io</span></div>
+    <div class="termcard-body"><span class="p">~/d7r.io $</span> <span class="k">curl -s d7r.io/registry/specs.json \</span>
+  <span class="k">| jq -r '.specs[] | "\(.id)\t\(.answers)"'</span>
+<span class="k">abr</span>        What agents deserve
+<span class="k">derp</span>       What the runtime must provide
+<span class="k">saga</span>       How an agent is represented
+<span class="k">ghost</span>      How a person is projected as counsel
+<span class="k">blueprint</span>  How knowledge is held, governed,
+           and exchanged
+<span class="c"># 5 specs · 2 families · all drafts</span>
+<span class="p">~/d7r.io $</span> <span class="blink">▮</span></div>
+  </aside>
   </div>
-</div>
+</section>
 
 <section id="stack">
   <div class="wrap">
-    <h2>Two families, one stack</h2>
-    <p>
-      The <strong>agent stack</strong> governs agents as digital workers. The
-      <strong>knowledge family</strong> governs the brains they work with. The seam
-      between them is the point: SAGA moves an agent, Blueprint moves a thought.
-    </p>
+    <div class="section-head reveal">
+      <p class="eyebrow">stack</p>
+      <h2>Two families, one stack</h2>
+      <p class="lede">
+        The <strong>agent stack</strong> governs agents as digital workers. The
+        <strong>knowledge family</strong> governs the brains they work with. The seam
+        between them is the point.
+      </p>
+    </div>
     <div class="families">
-      <div class="family">
-        <h3>The agent stack</h3>
+      <div class="family reveal">
+        <h3>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="10" rx="2"/><circle cx="12" cy="5" r="2"/><path d="M12 7v4M8 16h.01M16 16h.01"/></svg>
+          The agent stack
+        </h3>
         <div class="stack">
-          <div class="layer">
-            <span class="layer-name">ABR</span>
-            <span class="layer-what">what agents deserve</span>
-          </div>
-          <div class="layer">
-            <span class="layer-name">DERP</span>
-            <span class="layer-what">what the runtime must provide</span>
-          </div>
-          <div class="layer">
-            <span class="layer-name">SAGA</span>
-            <span class="layer-what">how an agent is represented</span>
-          </div>
-          <div class="layer">
-            <span class="layer-name">GHOST</span>
-            <span class="layer-what">how a person is projected as counsel</span>
-          </div>
+          <div class="layer"><span class="layer-name">ABR</span><span class="layer-what">what agents deserve</span></div>
+          <span class="layer-link" aria-hidden="true"></span>
+          <div class="layer"><span class="layer-name">DERP</span><span class="layer-what">what the runtime must provide</span></div>
+          <span class="layer-link" aria-hidden="true"></span>
+          <div class="layer"><span class="layer-name">SAGA</span><span class="layer-what">how an agent is represented</span></div>
+          <span class="layer-link" aria-hidden="true"></span>
+          <div class="layer"><span class="layer-name">GHOST</span><span class="layer-what">how a person is projected as counsel</span></div>
         </div>
       </div>
-      <div class="family">
-        <h3>The knowledge family</h3>
+      <div class="family reveal">
+        <h3>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2a5 5 0 0 0-5 5c0 1.1.36 2.12.97 2.95A6.98 6.98 0 0 0 5 15.5C5 19.09 8.13 22 12 22s7-2.91 7-6.5c0-2.24-1.15-4.22-2.97-5.55.61-.83.97-1.85.97-2.95a5 5 0 0 0-5-5Z"/></svg>
+          The knowledge family
+        </h3>
         <div class="stack">
-          <div class="layer">
-            <span class="layer-name">Blueprint</span>
-            <span class="layer-what">how knowledge is held, governed, and exchanged</span>
-          </div>
+          <div class="layer"><span class="layer-name">Blueprint</span><span class="layer-what">how knowledge is held, governed, and exchanged</span></div>
         </div>
         <p class="family-note">
           Seven documents in one repository: BLUEPRINT, POLARIS, DEFER, SPEAK, CONFIDE,
@@ -100,10 +138,15 @@
 
 <section id="specs">
   <div class="wrap">
-    <h2>The specifications</h2>
+    <div class="section-head reveal">
+      <p class="eyebrow">specifications</p>
+      <h2>The specifications</h2>
+      <p class="lede">Five open specifications, each in its own repository with its own site, license, and RFC process.</p>
+    </div>
     <div class="cards">
 
-      <article class="card">
+      <article class="card reveal">
+        <span class="num">01</span>
         <header>
           <h3>Agent Bill of Rights</h3>
           <span class="role">policy</span>
@@ -115,13 +158,14 @@
           realities of digital labor, not contingent on sentience or personhood.
         </p>
         <footer>
-          <a class="btn btn-small" href="https://agent-rights.org">agent-rights.org</a>
-          <a class="btn btn-small" href="https://github.com/d7r-LLC/agent-rights">Repository</a>
-          <span class="meta">Draft · CC BY 4.0</span>
+          <a class="btn btn-secondary btn-sm" href="https://agent-rights.org">agent-rights.org</a>
+          <a class="btn btn-secondary btn-sm" href="https://github.com/d7r-LLC/agent-rights">Repository</a>
+          <span class="meta">draft · CC BY 4.0</span>
         </footer>
       </article>
 
-      <article class="card">
+      <article class="card reveal">
+        <span class="num">02</span>
         <header>
           <h3>DERP</h3>
           <span class="role">standard</span>
@@ -133,13 +177,14 @@
           protections. The name is deliberately playful. The requirements are not.
         </p>
         <footer>
-          <a class="btn btn-small" href="https://derp-spec.dev">derp-spec.dev</a>
-          <a class="btn btn-small" href="https://github.com/d7r-LLC/derp-spec">Repository</a>
-          <span class="meta">Draft · CC BY 4.0</span>
+          <a class="btn btn-secondary btn-sm" href="https://derp-spec.dev">derp-spec.dev</a>
+          <a class="btn btn-secondary btn-sm" href="https://github.com/d7r-LLC/derp-spec">Repository</a>
+          <span class="meta">draft · CC BY 4.0</span>
         </footer>
       </article>
 
-      <article class="card">
+      <article class="card reveal">
+        <span class="num">03</span>
         <header>
           <h3>SAGA</h3>
           <span class="role">format</span>
@@ -152,13 +197,14 @@
           compliant runtime.
         </p>
         <footer>
-          <a class="btn btn-small" href="https://saga-standard.dev">saga-standard.dev</a>
-          <a class="btn btn-small" href="https://github.com/d7r-LLC/saga-standard">Repository</a>
-          <span class="meta">Draft · Apache 2.0</span>
+          <a class="btn btn-secondary btn-sm" href="https://saga-standard.dev">saga-standard.dev</a>
+          <a class="btn btn-secondary btn-sm" href="https://github.com/d7r-LLC/saga-standard">Repository</a>
+          <span class="meta">draft · Apache 2.0</span>
         </footer>
       </article>
 
-      <article class="card">
+      <article class="card reveal">
+        <span class="num">04</span>
         <header>
           <h3>GHOST</h3>
           <span class="role">counsel</span>
@@ -170,13 +216,14 @@
           how counsel stays bounded. A counselor recommends; it never decides.
         </p>
         <footer>
-          <a class="btn btn-small" href="https://ghost-spec.dev">ghost-spec.dev</a>
-          <a class="btn btn-small" href="https://github.com/d7r-LLC/ghost-spec">Repository</a>
-          <span class="meta">Draft · CC BY 4.0</span>
+          <a class="btn btn-secondary btn-sm" href="https://ghost-spec.dev">ghost-spec.dev</a>
+          <a class="btn btn-secondary btn-sm" href="https://github.com/d7r-LLC/ghost-spec">Repository</a>
+          <span class="meta">draft · CC BY 4.0</span>
         </footer>
       </article>
 
-      <article class="card">
+      <article class="card reveal">
+        <span class="num">05</span>
         <header>
           <h3>Blueprint</h3>
           <span class="role">knowledge</span>
@@ -185,13 +232,13 @@
         <p>
           A brain is a locally owned, policy governed, append only audited folder of
           plain text. Blueprint specifies the structure and governance of one brain, and
-          its companions specify purpose (POLARIS), authority (DEFER), exchange (SPEAK),
-          inference (CONFIDE), tooling residue (TRACE), and agent brains (RETAIN).
+          its companions specify purpose, authority, exchange, inference, tooling
+          residue, and agent brains.
         </p>
         <footer>
-          <a class="btn btn-small" href="https://blueprint-spec.dev">blueprint-spec.dev</a>
-          <a class="btn btn-small" href="https://github.com/d7r-LLC/blueprint">Repository</a>
-          <span class="meta">Draft · Apache 2.0</span>
+          <a class="btn btn-secondary btn-sm" href="https://blueprint-spec.dev">blueprint-spec.dev</a>
+          <a class="btn btn-secondary btn-sm" href="https://github.com/d7r-LLC/blueprint">Repository</a>
+          <span class="meta">draft · Apache 2.0</span>
         </footer>
       </article>
 
@@ -201,30 +248,65 @@
 
 <section id="registry">
   <div class="wrap">
-    <h2>Machine-readable registry</h2>
-    <p>
-      This index is also published as data. Tools that need to enumerate the
-      specifications should read the registry rather than scrape this page:
-    </p>
-    <p><a class="btn" href="/registry/specs.json">d7r.io/registry/specs.json</a></p>
+    <div class="registry-strip reveal">
+      <div class="rs-copy">
+        <p class="eyebrow">registry</p>
+        <h2>Machine-readable registry</h2>
+        <p>
+          This index is also published as data. Tools that need to enumerate the
+          specifications should read <code>registry/specs.json</code> rather than
+          scrape this page.
+        </p>
+      </div>
+      <a class="btn btn-primary" href="/registry/specs.json">cat registry/specs.json</a>
+    </div>
   </div>
 </section>
 
 </main>
 
 <footer class="colophon">
-  <div class="wrap">
-    <p>
-      Copyright &copy; 2026 d7r LLC. Site content licensed
-      <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
-      Each specification carries its own license.
-    </p>
-    <p>
-      <a href="https://github.com/d7r-LLC/d7r.io">This site's source</a> ·
-      <a href="mailto:hello@d7r.io">hello@d7r.io</a>
-    </p>
+  <div class="wrap cols">
+    <div>
+      <p>
+        Copyright &copy; 2026 d7r LLC. Site content licensed
+        <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
+        Each specification carries its own license.
+      </p>
+      <p>Specifications are drafts; nothing is adopted until it lands as a decision record.</p>
+    </div>
+    <div>
+      <p><a href="https://github.com/d7r-LLC/d7r.io">This site's source</a> · <a href="mailto:hello@d7r.io">hello@d7r.io</a></p>
+    </div>
   </div>
 </footer>
+
+<script>
+(function () {
+  var toggle = document.getElementById('theme-toggle');
+  toggle.addEventListener('click', function () {
+    var root = document.documentElement;
+    var current = root.getAttribute('data-theme');
+    if (!current) {
+      current = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+    }
+    var next = current === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('d7r-theme', next); } catch (e) {}
+  });
+
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) { entry.target.classList.add('in'); io.unobserve(entry.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('in'); });
+  }
+})();
+</script>
 
 </body>
 </html>
