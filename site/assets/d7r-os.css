@@ -159,6 +159,13 @@
   --ac-dark: #60a5fa; --ac-dark-2: #93c5fd; --ac-light: #1d4ed8;
   --ac-light-2: #1e40af; --ac-soft-light: #dbeafe; --ac-rgb: 96, 165, 250;
 }
+/* CTO line: the Frontier Academy document brand (forest + gold) expressed in
+   this system. Gold carries dark surfaces; forest carries light ones. Values
+   from d7r-cto/brand/tokens.json. */
+:root[data-accent="cto"], [data-accent="cto"].ac-scope {
+  --ac-dark: #d6a84b; --ac-dark-2: #e2c176; --ac-light: #163b2a;
+  --ac-light-2: #24553b; --ac-soft-light: #f3efe3; --ac-rgb: 214, 168, 75;
+}
 
 /* Scoped accent: re-derive the final tokens on the element itself, because
    custom properties resolve at the element that defines them. Theme-aware. */
@@ -500,6 +507,121 @@ section { position: relative; padding: 4.2rem 0; }
 .colophon p { margin: 0.3rem 0; }
 .colophon a { color: var(--ink-soft); }
 .colophon a:hover { color: var(--accent); }
+
+/* ---------- Prose (rendered markdown: specs, docs pages) ---------- */
+
+.prose { max-width: 50rem; }
+.prose > :first-child { margin-top: 0; }
+.prose h1 { font-size: clamp(1.9rem, 3.6vw, 2.5rem); margin: 2.2rem 0 0.9rem; }
+.prose h2 { font-size: 1.55rem; margin: 2.4rem 0 0.8rem; padding-top: 0.6rem; border-top: 1px solid var(--line); }
+.prose h3 { font-size: 1.18rem; margin: 1.8rem 0 0.6rem; }
+.prose h4 { font-size: 1rem; margin: 1.4rem 0 0.5rem; }
+.prose h2, .prose h3, .prose h4 { scroll-margin-top: 6rem; }
+.prose p, .prose li { color: var(--ink-soft); }
+.prose p { margin: 0.75rem 0; }
+.prose strong { color: var(--ink); }
+.prose ul, .prose ol { margin: 0.75rem 0 0.75rem 1.4rem; }
+.prose li { margin: 0.3rem 0; }
+.prose blockquote {
+  margin: 1.1rem 0; padding: 0.6rem 1.1rem;
+  border-left: 3px solid var(--accent); border-radius: 6px;
+  background: var(--accent-soft); color: var(--ink-soft);
+}
+.prose hr { border: 0; border-top: 1px solid var(--line); margin: 2.2rem 0; }
+.prose img { max-width: 100%; border-radius: var(--radius); }
+.prose code {
+  font-family: var(--mono); font-size: 0.86em;
+  background: var(--accent-soft); color: var(--accent);
+  border-radius: 5px; padding: 0.1em 0.35em;
+}
+.prose pre {
+  background: var(--term); border: 1px solid rgba(var(--ac-rgb), 0.2);
+  border-radius: var(--radius); padding: 1rem 1.15rem; overflow-x: auto;
+  margin: 1.1rem 0; line-height: 1.7;
+}
+.prose pre code { background: none; color: #e6edf3; padding: 0; font-size: 0.84rem; }
+.prose .anchor { margin-left: 0.4rem; opacity: 0; font-weight: 400; text-decoration: none; }
+.prose h2:hover .anchor, .prose h3:hover .anchor, .prose h4:hover .anchor { opacity: 0.7; }
+
+/* Tables (prose and standalone) */
+.prose table, table.d7r {
+  width: 100%; border-collapse: collapse; margin: 1.1rem 0;
+  font-size: 0.92rem;
+}
+.prose th, .prose td, table.d7r th, table.d7r td {
+  text-align: left; padding: 0.55rem 0.8rem; border-bottom: 1px solid var(--line);
+  vertical-align: top; color: var(--ink-soft);
+}
+.prose th, table.d7r th {
+  color: var(--ink); font-weight: 700; font-size: 0.85rem;
+  border-bottom: 1px solid var(--line-strong);
+}
+.table-scroll { overflow-x: auto; }
+@media (max-width: 640px) {
+  .prose table { display: block; overflow-x: auto; }
+}
+
+/* ---------- Spec page layout (sidebar TOC + content) ---------- */
+
+.page-wrapper {
+  display: grid; grid-template-columns: 15.5rem minmax(0, 1fr);
+  gap: 2.6rem; max-width: 72rem; margin: 0 auto; padding: 2.6rem 1.4rem 4rem;
+}
+.page-single { max-width: 53rem; margin: 0 auto; padding: 2.6rem 1.4rem 4rem; }
+.sidebar {
+  position: sticky; top: 5.4rem; align-self: start;
+  max-height: calc(100vh - 6.4rem); overflow-y: auto;
+  padding: 1.1rem 1.15rem;
+  background: var(--glass); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-line); border-radius: var(--radius-lg);
+  font-size: 0.85rem;
+}
+.sidebar .section-label {
+  font-family: var(--mono); font-size: 0.68rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.07em; color: var(--accent);
+  margin: 1rem 0 0.35rem;
+}
+.sidebar .section-label:first-child { margin-top: 0; }
+.sidebar ul { list-style: none; margin: 0; padding: 0; }
+.sidebar li { margin: 0.1rem 0; }
+.sidebar a {
+  display: block; padding: 0.22rem 0.5rem; border-radius: 6px;
+  color: var(--ink-soft); text-decoration: none !important;
+}
+.sidebar a:hover { color: var(--ink); background: var(--accent-soft); }
+@media (max-width: 56rem) {
+  .page-wrapper { grid-template-columns: 1fr; }
+  .sidebar { position: static; max-height: none; }
+}
+
+/* Highlighted layer in a stack diagram (the "you are here" marker) */
+.layer.here { border-color: var(--accent-line); background: var(--accent-soft); }
+.layer.here .layer-name { color: var(--accent); }
+
+/* Meta chips row (version, status, license) */
+.meta-chips { display: flex; gap: 0.5rem; flex-wrap: wrap; margin: 1.1rem 0 0; }
+.meta-chips .role { font-size: 0.72rem; }
+
+/* Markdown-embeddable components (used inside .prose by content pages) */
+.features { display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: 1.1rem; margin: 1.5rem 0; }
+.feature {
+  padding: 1.15rem 1.25rem;
+  background: var(--glass); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-line); border-radius: var(--radius-lg);
+  box-shadow: var(--card-glow); background-image: var(--glass-shine);
+}
+.prose .feature h3 { margin-top: 0.1rem; border: 0; padding-top: 0; }
+.video-embed {
+  position: relative; aspect-ratio: 16 / 9; margin: 1.5rem 0;
+  border-radius: var(--radius-lg); overflow: hidden;
+  border: 1px solid var(--glass-line); box-shadow: var(--card-glow);
+}
+.video-embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.spec-family {
+  padding: 1.15rem 1.25rem; margin: 1.5rem 0;
+  background: var(--glass); border: 1px solid var(--glass-line);
+  border-radius: var(--radius-lg); box-shadow: var(--card-glow);
+}
 
 /* ---------- Reveal-on-scroll ---------- */
 

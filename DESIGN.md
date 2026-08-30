@@ -96,6 +96,12 @@ is the light-surface color at >= 4.5:1 on `#f8fafc`.
 | saga-standard.dev | `saga` | Cyan, state in motion | `#22d3ee` | `#67e8f9` | `#0e7490` | `#155e75` | `#cffafe` |
 | ghost-spec.dev | `ghost` | Violet, spectral counsel | `#c084fc` | `#d8b4fe` | `#7e22ce` | `#6b21a8` | `#f3e8ff` |
 | blueprint-spec.dev | `blueprint` | Blue, blueprint paper | `#60a5fa` | `#93c5fd` | `#1d4ed8` | `#1e40af` | `#dbeafe` |
+| d7r.io/cto | `cto` | Forest & gold, the executive line | `#d6a84b` | `#e2c176` | `#163b2a` | `#24553b` | `#f3efe3` |
+
+The `cto` scheme is the Frontier Academy document brand (`d7r-cto/brand/tokens.json`)
+expressed in this system: gold carries dark surfaces, forest carries light ones; the
+soft tint is the kit's cream. It marks the CTO course-and-tools surface rather than a
+spec repository.
 
 **Usage.** Site-wide: `<html data-accent="saga">`; every component (buttons, glows,
 logo, chips, aurora, terminal cards) re-derives from the accent primitives. Scoped

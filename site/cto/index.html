@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en" data-accent="cto">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>d7r CTO: tools and courses for the work a fractional CTO actually does</title>
+<meta name="description" content="Seeing what AI coding tooling is running inside a company, governing it, and reporting on it in language a founder can act on. Tools, the audit packet, and the course behind them.">
+<link rel="canonical" href="https://d7r.io/cto/">
+<meta property="og:title" content="d7r CTO">
+<meta property="og:description" content="Tools and courses for the work a fractional CTO actually does. Observe, never remediate. Evidence-backed, offline, no phone home.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://d7r.io/cto/">
+<script>
+  (function () {
+    document.documentElement.classList.add('js');
+    try {
+      var t = localStorage.getItem('d7r-theme');
+      if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  })();
+</script>
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="/assets/d7r-os.css">
+</head>
+<body>
+
+<div class="aurora" aria-hidden="true"></div>
+
+<header class="masthead">
+  <div class="masthead-inner">
+    <a class="logo" href="/" aria-label="d7r.io home"><span class="em">~/</span>d<span class="em">7</span>r<span class="em">.io</span><span class="cursor" aria-hidden="true"></span></a>
+    <nav aria-label="Primary">
+      <a href="#questions">The questions</a>
+      <a href="#toolkit">Toolkit</a>
+      <a href="#constraints">Constraints</a>
+      <a href="/">Specifications</a>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle color theme">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section class="hero">
+  <div class="gridfield" aria-hidden="true"></div>
+  <div class="wrap hero-grid">
+  <div>
+    <p class="eyebrow">cto</p>
+    <h1>Tools and courses for the work a fractional CTO <span class="accent-word">actually does</span>.</h1>
+    <p class="expansion">See it. Govern it. Report it in language a founder can act on.</p>
+    <p class="thesis">
+      AI coding tools are already inside the company. The CTO line is one product
+      family for seeing what is running, governing what it may touch, and reporting
+      on it with evidence: a read-only toolkit, the Fractional CTO audit packet, and
+      the courses that teach the practice.
+    </p>
+
+    <div class="status-flag reveal">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 9v4M12 17h.01"/><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/></svg>
+      <span><strong>In build; nothing is published yet.</strong> The tools are a scaffold, every
+      subcommand currently exits with <em>not implemented</em>, and the repository is not yet
+      public. What is written here is the design, stated as constraints.</span>
+    </div>
+
+    <div class="actions">
+      <a class="btn btn-primary" href="mailto:hello@d7r.io?subject=d7r%20CTO">hello --d7r.io</a>
+      <a class="btn btn-secondary" href="/">The specifications behind it</a>
+    </div>
+  </div>
+
+  <aside class="termcard reveal" aria-label="Planned sweep command specimen">
+    <div class="termcard-bar"><i></i><i></i><i></i><span>~/acme-corp</span></div>
+    <div class="termcard-body"><span class="c"># one command, read-only: what AI coding tooling</span>
+<span class="c"># is on this machine, and what can it reach?</span>
+<span class="p">~/acme-corp $</span> <span class="k">d7r sweep</span>
+error: not implemented
+<span class="c"># honest today. The design ships before the code:</span>
+<span class="c"># observe-only · offline · no phone home</span>
+<span class="c"># credentials excluded by construction</span>
+<span class="c"># "unknown" is a legal answer, with its reason</span>
+<span class="p">~/acme-corp $</span> <span class="blink">▮</span></div>
+  </aside>
+  </div>
+</section>
+
+<section id="questions">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">questions</p>
+      <h2>Three questions most founders cannot answer</h2>
+      <p class="lede">
+        About their own company, today. <code style="font-family:var(--mono);font-size:0.85em">d7r sweep</code>
+        answers the first read-only in one command; the rest of the suite gives a
+        structure for answering the other two.
+      </p>
+    </div>
+    <div class="cards">
+      <article class="card reveal">
+        <span class="num">01</span>
+        <header><h3>What is installed?</h3><span class="role">see</span></header>
+        <p class="answers">Which AI coding tools are running inside the company.</p>
+        <p>Agents, harnesses, IDE plugins, MCP servers: an inventory taken from the
+        machines themselves, not from the procurement list.</p>
+      </article>
+      <article class="card reveal">
+        <span class="num">02</span>
+        <header><h3>What can it read?</h3><span class="role">govern</span></header>
+        <p class="answers">What those tools are allowed to touch.</p>
+        <p>Repository access, file scopes, environment secrets, network reach: the
+        permissions as they are, against the permissions as intended.</p>
+      </article>
+      <article class="card reveal">
+        <span class="num">03</span>
+        <header><h3>Where do transcripts go?</h3><span class="role">report</span></header>
+        <p class="answers">Where the record of everything they read ends up.</p>
+        <p>Session logs, telemetry, cloud retention: the evidence trail of the
+        tooling itself, reported in language a board can act on.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="toolkit">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">toolkit</p>
+      <h2>One product line, three surfaces</h2>
+    </div>
+    <div class="cards">
+      <article class="card reveal">
+        <span class="num">01</span>
+        <header><h3>The tools</h3><span class="role">cli</span></header>
+        <p class="answers">The <code style="font-family:var(--mono);font-size:0.9em">d7r</code> binary and its detector catalog.</p>
+        <p>A Rust core for detection, redaction, and evidence; official plugins for
+        coding agents and harnesses; adapters for log sinks, compliance platforms,
+        and security tools. Read-only by design.</p>
+      </article>
+      <article class="card reveal">
+        <span class="num">02</span>
+        <header><h3>The audit packet</h3><span class="role">practice</span></header>
+        <p class="answers">The Fractional CTO packet: steering, scaffolds, templates, examples.</p>
+        <p>The working documents of an engagement, branded under the Academy document
+        kit (forest and gold, severity ledgers, evidence-first reporting), so a
+        finding arrives as something a founder can act on.</p>
+      </article>
+      <article class="card reveal">
+        <span class="num">03</span>
+        <header><h3>The courses</h3><span class="role">academy</span></header>
+        <p class="answers">Course material distributed with the tools.</p>
+        <p>The D7R Frontier Academy curriculum teaches the practice the tools
+        instrument: how to see, govern, and report on AI tooling as the CTO the
+        company doesn't have yet.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="constraints">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">constraints</p>
+      <h2>What these tools will never do</h2>
+      <p class="lede">Constraints on the design, not a roadmap.</p>
+    </div>
+    <div class="table-scroll">
+      <table class="d7r">
+        <thead><tr><th>Commitment</th><th>What it means</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Observe, never remediate</strong></td><td>No command changes the system under audit.</td></tr>
+          <tr><td><strong>No account, no network, no phone home</strong></td><td>Every core command completes offline.</td></tr>
+          <tr><td><strong>Credentials excluded by construction</strong></td><td>Not filtered out afterwards.</td></tr>
+          <tr><td><strong>"Unknown" is a legal answer</strong></td><td>Recorded with its reason. Guessing destroys a re-audit product.</td></tr>
+          <tr><td><strong>No compliance claim</strong></td><td>Evidence-backed recommendations. No badge, no pass mark, no certification.</td></tr>
+          <tr><td><strong>No scoring of people</strong></td><td>The unit of analysis is a system, a repository, or a harness; never a developer's output.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="colophon">
+  <div class="wrap cols">
+    <div>
+      <p>The d7r CTO line &middot; part of <a href="https://d7r.io">d7r Open Source</a>.</p>
+      <p>In build; the repository publishes when the first command works.</p>
+    </div>
+    <div>
+      <p><a href="/">Specifications</a> &middot; <a href="/brand/">Brand</a> &middot; <a href="mailto:hello@d7r.io">hello@d7r.io</a></p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  document.getElementById('theme-toggle').addEventListener('click', function () {
+    var root = document.documentElement;
+    var cur = root.getAttribute('data-theme');
+    if (!cur) cur = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+    var next = cur === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('d7r-theme', next); } catch (e) {}
+  });
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.1, rootMargin: '0px 0px -6% 0px' });
+    document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('in'); });
+  }
+})();
+</script>
+
+</body>
+</html>
